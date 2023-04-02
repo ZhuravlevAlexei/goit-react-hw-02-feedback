@@ -1,0 +1,18 @@
+p {
+  margin: 0;
+}
+.feedbackArea {
+  padding-left: 50px;
+}
+
+.voteButton {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.statInfo {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
