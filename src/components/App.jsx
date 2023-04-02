@@ -1,6 +1,8 @@
-import { nanoid } from 'nanoid';
 import css from './App.module.css';
 import { Component } from 'react';
+import Statistics from './Statistics/Statistics';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import Section from './Section/Section';
 
 class App extends Component {
   state = {
@@ -34,45 +36,18 @@ class App extends Component {
   render() {
     return (
       <div className={css.feedbackArea}>
-        <h3>Please leave feedback</h3>
-        <div></div>
-        <button
-          key={nanoid()}
-          className={css.voteButton}
-          type="button"
-          name="good"
-          onClick={this.handleVote}
-        >
-          Good
-        </button>
-        <button
-          key={nanoid()}
-          className={css.voteButton}
-          type="button"
-          name="neutral"
-          onClick={this.handleVote}
-        >
-          Neutral
-        </button>
-        <button
-          key={nanoid()}
-          className={css.voteButton}
-          type="button"
-          name="bad"
-          onClick={this.handleVote}
-        >
-          Bad
-        </button>
-        <h3>Statistics</h3>
-        <div>
-          <p className={css.statInfo}>Good: {this.state.good}</p>
-          <p className={css.statInfo}>Neutral: {this.state.neutral}</p>
-          <p className={css.statInfo}>Bad: {this.state.bad}</p>
-          <p className={css.statInfo}>Total: {this.countTotalFeedback()}</p>
-          <p className={css.statInfo}>
-            Positive feedback: {this.countPositiveFeedbackPercentage()} %
-          </p>
-        </div>
+        <Section title="Please leave feedback">
+          <FeedbackOptions onLeaveFeedback={this.handleVote} />
+        </Section>
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
       </div>
     );
   }
